@@ -1,4 +1,3 @@
-// Internationalization data
 const translations = {
     uz: {
         title: "Life organizer",
@@ -95,7 +94,6 @@ const translations = {
     }
 };
 
-// Function to update text content based on selected language
 function updateLanguage(lang) {
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
@@ -106,7 +104,6 @@ function updateLanguage(lang) {
     localStorage.setItem('lang', lang);
 }
 
-// Load saved or default language
 function loadLanguage() {
     const savedLang = localStorage.getItem('lang') || 'uz';
     document.getElementById('language-select').value = savedLang;
