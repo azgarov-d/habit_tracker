@@ -1,11 +1,9 @@
-// State management
 let habits = JSON.parse(localStorage.getItem('habits')) || [];
 let moods = JSON.parse(localStorage.getItem('moods')) || {};
 let goals = JSON.parse(localStorage.getItem('goals')) || [];
 let reflections = JSON.parse(localStorage.getItem('reflections')) || [];
 let chartInstance = null;
 
-// DOM elements
 const habitForm = document.getElementById('habit-form');
 const habitModal = document.getElementById('habit-modal');
 const addHabitBtn = document.getElementById('add-habit-btn');
@@ -26,7 +24,6 @@ const motivationalQuote = document.getElementById('motivational-quote');
 const themeToggle = document.getElementById('theme-toggle');
 const languageSelect = document.getElementById('language-select');
 
-// Initialize application
 function init() {
     loadTheme();
     loadLanguage();
@@ -37,7 +34,6 @@ function init() {
     setupEventListeners();
 }
 
-// Update habit grid
 function updateHabitGrid() {
     const lang = document.body.dataset.lang || 'uz';
     habitGrid.innerHTML = '';
@@ -77,7 +73,6 @@ function updateHabitGrid() {
     });
 }
 
-// Calculate habit streak
 function calculateStreak(habit) {
     let streak = 0;
     const today = new Date().toISOString().split('T')[0];
@@ -89,7 +84,6 @@ function calculateStreak(habit) {
     return streak;
 }
 
-// Calculate habit success rate (last 30 days)
 function calculateSuccessRate(habit) {
     const today = new Date();
     let completedDays = 0;
@@ -104,7 +98,6 @@ function calculateSuccessRate(habit) {
     return (completedDays / 30 * 100).toFixed(0);
 }
 
-// Update mood chart
 function updateMoodChart() {
     const lang = document.body.dataset.lang || 'uz';
     const today = new Date();
@@ -176,7 +169,6 @@ function updateMoodChart() {
     });
 }
 
-// Update goal grid
 function updateGoalGrid() {
     const lang = document.body.dataset.lang || 'uz';
     goalGrid.innerHTML = '';
@@ -226,13 +218,11 @@ function updateGoalGrid() {
     });
 }
 
-// Calculate goal progress
 function calculateGoalProgress(goal) {
     const completed = goal.subtasks.filter(subtask => subtask.completed).length;
     return (completed / goal.subtasks.length * 100).toFixed(0);
 }
 
-// Calculate days left for goal
 function calculateDaysLeft(deadline) {
     const today = new Date();
     const deadlineDate = new Date(deadline);
@@ -240,7 +230,6 @@ function calculateDaysLeft(deadline) {
     return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 }
 
-// Update motivational quote
 function updateQuote() {
     const lang = document.body.dataset.lang || 'uz';
     const maxStreak = Math.max(...habits.map(habit => calculateStreak(habit)), 0);
@@ -248,8 +237,6 @@ function updateQuote() {
         ? translations[lang].quote_streak.replace('{streak}', maxStreak)
         : translations[lang].quote_default;
 }
-
-// Add or edit habit
 function handleHabitSubmit(e) {
     e.preventDefault();
     const lang = document.body.dataset.lang || 'uz';
@@ -278,7 +265,6 @@ function handleHabitSubmit(e) {
     habitModal.close();
 }
 
-// Toggle habit completion
 function toggleHabitComplete(index) {
     const today = new Date().toISOString().split('T')[0];
     habits[index].completions[today] = !habits[index].completions[today];
@@ -287,7 +273,6 @@ function toggleHabitComplete(index) {
     updateQuote();
 }
 
-// Delete habit
 function deleteHabit(index) {
     const lang = document.body.dataset.lang || 'uz';
     if (confirm(translations[lang].confirm_delete)) {
@@ -298,7 +283,6 @@ function deleteHabit(index) {
     }
 }
 
-// Save mood
 function handleSaveMood() {
     const lang = document.body.dataset.lang || 'uz';
     const mood = document.querySelector('.mood-btn.active')?.dataset.mood;
@@ -316,7 +300,6 @@ function handleSaveMood() {
     document.querySelectorAll('.mood-btn').forEach(btn => btn.classList.remove('active'));
 }
 
-// Add or edit goal
 function handleGoalSubmit(e) {
     e.preventDefault();
     const lang = document.body.dataset.lang || 'uz';
@@ -347,14 +330,12 @@ function handleGoalSubmit(e) {
     goalModal.close();
 }
 
-// Toggle subtask completion
 function toggleSubtask(goalIndex, subtaskIndex) {
     goals[goalIndex].subtasks[subtaskIndex].completed = !goals[goalIndex].subtasks[subtaskIndex].completed;
     saveGoals();
     updateGoalGrid();
 }
 
-// Delete goal
 function deleteGoal(index) {
     const lang = document.body.dataset.lang || 'uz';
     if (confirm(translations[lang].confirm_delete)) {
@@ -364,7 +345,6 @@ function deleteGoal(index) {
     }
 }
 
-// Save weekly reflection
 function handleReflectionSubmit(e) {
     e.preventDefault();
     const lang = document.body.dataset.lang || 'uz';
@@ -384,7 +364,6 @@ function handleReflectionSubmit(e) {
     reflectionModal.close();
 }
 
-// Save to localStorage
 function saveHabits() {
     localStorage.setItem('habits', JSON.stringify(habits));
 }
@@ -401,7 +380,6 @@ function saveReflections() {
     localStorage.setItem('reflections', JSON.stringify(reflections));
 }
 
-// Toggle theme
 function toggleTheme() {
     const isDark = document.body.dataset.theme === 'dark';
     document.body.dataset.theme = isDark ? 'light' : 'dark';
@@ -409,9 +387,7 @@ function toggleTheme() {
     updateMoodChart();
 }
 
-// Setup event listeners
 function setupEventListeners() {
-    // Habit form
     addHabitBtn.addEventListener('click', () => {
         document.getElementById('habit-modal').querySelector('h2').textContent = translations[document.body.dataset.lang || 'uz'].add_habit;
         habitForm.reset();
@@ -420,7 +396,6 @@ function setupEventListeners() {
     habitForm.addEventListener('submit', handleHabitSubmit);
     cancelHabitBtn.addEventListener('click', () => habitModal.close());
 
-    // Mood input
     document.querySelectorAll('.mood-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('active'));
@@ -429,7 +404,6 @@ function setupEventListeners() {
     });
     saveMoodBtn.addEventListener('click', handleSaveMood);
 
-    // Goal form
     addGoalBtn.addEventListener('click', () => {
         document.getElementById('goal-modal').querySelector('h2').textContent = translations[document.body.dataset.lang || 'uz'].add_goal;
         goalForm.reset();
@@ -438,7 +412,6 @@ function setupEventListeners() {
     goalForm.addEventListener('submit', handleGoalSubmit);
     cancelGoalBtn.addEventListener('click', () => goalModal.close());
 
-    // Reflection form
     weeklyReflectionBtn.addEventListener('click', () => {
         reflectionForm.reset();
         reflectionModal.showModal();
@@ -446,10 +419,8 @@ function setupEventListeners() {
     reflectionForm.addEventListener('submit', handleReflectionSubmit);
     cancelReflectionBtn.addEventListener('click', () => reflectionModal.close());
 
-    // Theme toggle
     themeToggle.addEventListener('click', toggleTheme);
 
-    // Language change
     languageSelect.addEventListener('change', (e) => {
         updateLanguage(e.target.value);
         updateHabitGrid();
@@ -459,11 +430,9 @@ function setupEventListeners() {
     });
 }
 
-// Load saved theme
 function loadTheme() {
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.body.dataset.theme = savedTheme;
 }
 
-// Initialize on load
 document.addEventListener('DOMContentLoaded', init);
