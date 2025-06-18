@@ -1,7 +1,7 @@
 // Internationalization data
 const translations = {
     uz: {
-        title: "Odatchi va Hayot Tadbirkori",
+        title: "Life organizer",
         quote_default: "Bugun kichik bir qadam, ertaga katta yutuqqa olib personally keladi!",
         quote_streak: "Ajoyib! Siz {streak} kunlik seriyaga erishdingiz!",
         habits: "Odatchilar",
