@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="title">Odatchi va Hayot Tadbirkori</title>
+    <title data-i18n="title">Life organizer</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 </head>
 <body data-theme="light" data-lang="uz">
-    <!-- Header -->
     <header class="header">
         <h1 data-i18n="title">Odatchi va Hayot Tadbirkori</h1>
         <div class="header-controls">
@@ -26,21 +24,17 @@
         </div>
     </header>
 
-    <!-- Main content -->
     <main class="container">
-        <!-- Quote Section -->
         <section class="quote card">
             <p id="motivational-quote" data-i18n="quote_default">"Bugun kichik bir qadam, ertaga katta yutuqqa olib keladi!"</p>
         </section>
 
-        <!-- Habit Tracker -->
         <section class="habits card">
             <h2 data-i18n="habits">Odatchilar</h2>
             <button id="add-habit-btn" class="btn btn-primary" data-i18n="add_habit">Yangi Odatchi Qo'shish</button>
             <div id="habit-grid" class="habit-grid"></div>
         </section>
 
-        <!-- Mood Tracker -->
         <section class="mood card">
             <h2 data-i18n="mood_tracker">Kayfiyat Kuzatuvchisi</h2>
             <div class="mood-input">
@@ -58,7 +52,6 @@
             <canvas id="mood-chart"></canvas>
         </section>
 
-        <!-- Goal Management -->
         <section class="goals card">
             <h2 data-i18n="goals">Maqsadlar</h2>
             <button id="add-goal-btn" class="btn btn-primary" data-i18n="add_goal">Yangi Maqsad Qo'shish</button>
@@ -66,7 +59,6 @@
         </section>
     </main>
 
-    <!-- Habit Modal -->
     <dialog id="habit-modal" class="dialog">
         <div class="dialog-content">
             <h2 data-i18n="add_habit">Yangi Odatchi Qo'shish</h2>
@@ -83,7 +75,6 @@
         </div>
     </dialog>
 
-    <!-- Goal Modal -->
     <dialog id="goal-modal" class="dialog">
         <div class="dialog-content">
             <h2 data-i18n="add_goal">Yangi Maqsad Qo'shish</h2>
@@ -108,7 +99,6 @@
         </div>
     </dialog>
 
-    <!-- Weekly Reflection Modal -->
     <dialog id="reflection-modal" class="dialog">
         <div class="dialog-content">
             <h2 data-i18n="weekly_reflection">Haftalik Tahlil</h2>
@@ -125,7 +115,6 @@
         </div>
     </dialog>
 
-    <!-- Footer -->
     <footer class="footer">
         <p data-i18n="footer">© 2025 Odatchi va Hayot Tadbirkori. Barcha huquqlar himoyalangan.</p>
         <button id="weekly-reflection-btn" class="btn btn-secondary" data-i18n="weekly_reflection">Haftalik Tahlil</button>
