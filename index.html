@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="title">Odatchi va Hayot Tadbirkori</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body data-theme="light" data-lang="uz">
+    <!-- Header -->
+    <header class="header">
+        <h1 data-i18n="title">Odatchi va Hayot Tadbirkori</h1>
+        <div class="header-controls">
+            <select id="language-select" aria-label="Select language">
+                <option value="uz" selected>O'zbek</option>
+                <option value="ru">Русский</option>
+                <option value="en">English</option>
+            </select>
+            <button id="theme-toggle" class="btn btn-icon" aria-label="Mavzuni o'zgartirish">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="container">
+        <!-- Quote Section -->
+        <section class="quote card">
+            <p id="motivational-quote" data-i18n="quote_default">"Bugun kichik bir qadam, ertaga katta yutuqqa olib keladi!"</p>
+        </section>
+
+        <!-- Habit Tracker -->
+        <section class="habits card">
+            <h2 data-i18n="habits">Odatchilar</h2>
+            <button id="add-habit-btn" class="btn btn-primary" data-i18n="add_habit">Yangi Odatchi Qo'shish</button>
+            <div id="habit-grid" class="habit-grid"></div>
+        </section>
+
+        <!-- Mood Tracker -->
+        <section class="mood card">
+            <h2 data-i18n="mood_tracker">Kayfiyat Kuzatuvchisi</h2>
+            <div class="mood-input">
+                <label data-i18n="mood_today">Bugungi kayfiyatingiz:</label>
+                <div class="mood-emojis">
+                    <button class="mood-btn" data-mood="1">😔</button>
+                    <button class="mood-btn" data-mood="2">😐</button>
+                    <button class="mood-btn" data-mood="3">😊</button>
+                    <button class="mood-btn" data-mood="4">😄</button>
+                    <button class="mood-btn" data-mood="5">🤩</button>
+                </div>
+                <textarea id="mood-note" placeholder="Qisqa eslatma (ixtiyoriy)" aria-label="Mood note"></textarea>
+                <button id="save-mood" class="btn btn-primary" data-i18n="save_mood">Kayfiyatni Saqlash</button>
+            </div>
+            <canvas id="mood-chart"></canvas>
+        </section>
+
+        <!-- Goal Management -->
+        <section class="goals card">
+            <h2 data-i18n="goals">Maqsadlar</h2>
+            <button id="add-goal-btn" class="btn btn-primary" data-i18n="add_goal">Yangi Maqsad Qo'shish</button>
+            <div id="goal-grid" class="goal-grid"></div>
+        </section>
+    </main>
+
+    <!-- Habit Modal -->
+    <dialog id="habit-modal" class="dialog">
+        <div class="dialog-content">
+            <h2 data-i18n="add_habit">Yangi Odatchi Qo'shish</h2>
+            <form id="habit-form">
+                <div class="form-group">
+                    <label for="habit-name" data-i18n="habit_name">Odatchi Nomi</label>
+                    <input type="text" id="habit-name" required placeholder="Masalan, Kitob o'qish" aria-required="true">
+                </div>
+                <div class="dialog-actions">
+                    <button type="submit" class="btn btn-primary" data-i18n="save">Saqlash</button>
+                    <button type="button" id="cancel-habit" class="btn btn-secondary" data-i18n="cancel">Bekor qilish</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- Goal Modal -->
+    <dialog id="goal-modal" class="dialog">
+        <div class="dialog-content">
+            <h2 data-i18n="add_goal">Yangi Maqsad Qo'shish</h2>
+            <form id="goal-form">
+                <div class="form-group">
+                    <label for="goal-name" data-i18n="goal_name">Maqsad Nomi</label>
+                    <input type="text" id="goal-name" required placeholder="Masalan, 5 km yugurish" aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="goal-deadline" data-i18n="deadline">Muddat</label>
+                    <input type="date" id="goal-deadline" required aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="subtasks" data-i18n="subtasks">Kichik Vazifalar (har birini yangi qatorda kiriting)</label>
+                    <textarea id="subtasks" placeholder="Masalan, Har kuni 1 km yugurish" aria-label="Subtasks"></textarea>
+                </div>
+                <div class="dialog-actions">
+                    <button type="submit" class="btn btn-primary" data-i18n="save">Saqlash</button>
+                    <button type="button" id="cancel-goal" class="btn btn-secondary" data-i18n="cancel">Bekor qilish</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- Weekly Reflection Modal -->
+    <dialog id="reflection-modal" class="dialog">
+        <div class="dialog-content">
+            <h2 data-i18n="weekly_reflection">Haftalik Tahlil</h2>
+            <form id="reflection-form">
+                <div class="form-group">
+                    <label for="reflection-text" data-i18n="reflection_prompt">Bu hafta qanday o'tdi? Nimalarni muvaffaqiyatli bajardingiz?</label>
+                    <textarea id="reflection-text" rows="5" placeholder="Fikrlaringizni yozing..." aria-label="Weekly reflection"></textarea>
+                </div>
+                <div class="dialog-actions">
+                    <button type="submit" class="btn btn-primary" data-i18n="save">Saqlash</button>
+                    <button type="button" id="cancel-reflection" class="btn btn-secondary" data-i18n="cancel">Bekor qilish</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p data-i18n="footer">© 2025 Odatchi va Hayot Tadbirkori. Barcha huquqlar himoyalangan.</p>
+        <button id="weekly-reflection-btn" class="btn btn-secondary" data-i18n="weekly_reflection">Haftalik Tahlil</button>
+    </footer>
+
+    <script src="lang.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
