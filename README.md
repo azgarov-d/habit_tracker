@@ -1,86 +1,112 @@
-# 💼 Hayot Tashkilotchisi / Odatlar Kuzatuvchisi
+# 🌟 Hayot Tashkilotchisi – Life Organizer Web App
 
-## 🌍 Tillar:
-- 🇺🇿 O'zbek (default)
-- 🇷🇺 Русский
-- 🇬🇧 English
+## 🌍 Multilingual Habit + Mood + Goal Tracker
+🇺🇿 O‘zbek (default) | 🇷🇺 Русский | 🇬🇧 English  
+🌓 Dark/Light rejimi | 📱 Mobilga mos | 💾 LocalStorage asosida
 
 ---
 
-## 📝 Tavsif (Oʻzbekcha)
+## 🇺🇿 Oʻzbekcha
 
-**Hayot Tashkilotchisi** — bu insonning kundalik hayotini tartibga solishga yordam beradigan ilg‘or veb-ilova. U orqali foydalanuvchi o‘z odatlarini kuzatishi, ruhiy holatini belgilashi, maqsadlarini rejalashtirishi va umumiy progressini tahlil qilishi mumkin. 
+**Hayot Tashkilotchisi** — bu zamonaviy veb-ilova bo‘lib, foydalanuvchining kundalik odatlari, ruhiy holati, maqsadlari va umumiy hayotiy tartibini boshqarishga yordam beradi. Barcha imkoniyatlar to‘liq client-side, ya’ni foydalanuvchi brauzerida ishlaydi.
 
 ### 🔑 Asosiy xususiyatlar:
-- ✅ Odatlar qo‘shish, belgilang va bajarilganini ko‘rish
-- 📊 Mood tracker (grafik ko‘rinishda)
-- 🎯 Maqsadlar boshqaruvi (subtask, progress bar, deadline)
-- 💡 Motivatsion sitatalar
-- 🌓 Dark/Light rejim (foydalanuvchi tanloviga moslashadi)
-- 🌐 3 tilda interfeys: O‘zbek (default), Rus, Ingliz
-- 💾 Ma’lumotlar localStorage’da saqlanadi
-- 📱 Mobil va desktop qurilmalar uchun mos dizayn
-
-### 🛠 Texnologiyalar:
-- HTML5, CSS3, JavaScript
-- Chart.js (statistik diagrammalar uchun)
-- ShadCN UI dizayn uslubi
-- LocalStorage
-- Til almashtirish uchun `lang.js`
+- ✅ Odatlar ro‘yxati va har kunlik bajargan/bajarmaganini belgilash
+- 📊 Mood tracker: emoji asosida + haftalik grafik (Chart.js)
+- 🎯 Maqsadlar boshqaruvi: subtasks, deadline, progress bar
+- 💡 Har kuni motivatsion sitata
+- 🌐 3 til: O‘zbek (default), Rus, Ingliz
+- 🌓 Light / Dark rejim (foydalanuvchining tanloviga moslashadi)
+- 💾 Ma’lumotlar localStorage’da saqlanadi (offline rejimda ishlaydi)
+- 📱 100% mobil va planshetga mos (responsive dizayn)
+- ⚙️ Toza HTML, CSS, JS asosida, hech qanday frameworklarsiz
 
 ---
 
-## 📝 Описание (Русский)
+## 🇷🇺 Русский
 
-**Органайзер жизни** — это продвинутое веб-приложение, которое помогает пользователю организовать повседневную жизнь: отслеживать привычки, фиксировать настроение, ставить цели и анализировать прогресс.
+**Органайзер Жизни** — это современное веб-приложение, которое помогает пользователю отслеживать свои привычки, настроение, цели и лучше управлять повседневной жизнью. Приложение работает полностью на стороне клиента (браузера).
 
-### 🔑 Основные функции:
-- ✅ Добавление и отслеживание привычек
-- 📊 Трекер настроения (графики)
-- 🎯 Управление целями (подзадачи, прогресс-бар, дедлайны)
-- 💡 Мотивационные цитаты
-- 🌓 Темная и светлая тема (на выбор пользователя)
-- 🌐 Интерфейс на 3 языках: узбекский (по умолчанию), русский, английский
-- 💾 Данные хранятся в localStorage
-- 📱 Адаптивный дизайн для мобильных и десктопных устройств
-
-### 🛠 Технологии:
-- HTML5, CSS3, JavaScript
-- Chart.js (диаграммы)
-- Стиль дизайна ShadCN UI
-- LocalStorage
-- Переключение языка через `lang.js`
+### 🔑 Основные возможности:
+- ✅ Трекер привычек: отметить, выполнить, пропустить
+- 📊 Трекер настроения с графиками (Chart.js)
+- 🎯 Управление целями: подзадачи, прогрессбар, дедлайны
+- 💡 Мотивационная цитата на каждый день
+- 🌐 3 языка: узбекский (по умолчанию), русский, английский
+- 🌓 Светлая / тёмная тема с сохранением выбора
+- 💾 Данные сохраняются в localStorage (работает офлайн)
+- 📱 Полностью адаптивный интерфейс под все устройства
+- ⚙️ HTML, CSS, JavaScript (без фреймворков)
 
 ---
 
-## 📝 Description (English)
+## 🇬🇧 English
 
-**Life Organizer** is an advanced web application that helps users structure their daily lives. With this app, users can track habits, record mood, manage goals, and analyze their overall progress.
+**Life Organizer** is a clean and powerful web app that helps users manage daily habits, moods, and long-term goals with ease. Fully client-side and works offline — all your data is saved locally in your browser.
 
 ### 🔑 Key Features:
-- ✅ Add, check off, and track daily habits
-- 📊 Mood tracker with visual charts
-- 🎯 Goal management with subtasks, deadlines, and progress bars
-- 💡 Daily motivational quotes
-- 🌓 Dark and Light theme toggle
+- ✅ Track habits with daily checklists
+- 📊 Mood tracking using emojis and graphs (Chart.js)
+- 🎯 Goal manager with subtasks, deadlines, and progress indicators
+- 💡 Daily motivational quote generator
 - 🌐 Multilingual interface: Uzbek (default), Russian, English
-- 💾 Stores user data in localStorage
-- 📱 Fully responsive for all screen sizes
-
-### 🛠 Technologies:
-- HTML5, CSS3, JavaScript
-- Chart.js (for data visualizations)
-- ShadCN UI-inspired design system
-- LocalStorage
-- Language switching via `lang.js`
+- 🌓 Dark / Light theme with persistent user preference
+- 💾 Offline support via browser localStorage
+- 📱 Fully responsive layout for all screen sizes
+- ⚙️ Built with pure HTML, CSS, and JavaScript (no frameworks)
 
 ---
 
-## 📂 Loyiha Strukturasi / Структура проекта / Project Structure
+## 🛠 Texnologiyalar / Технологии / Technologies
 
-📁 project/
-├── index.html
-├── styles.css
-├── script.js
-├── lang.js
-└── README.md
+- HTML5, CSS3, JavaScript (Vanilla)
+- Chart.js (grafiklar uchun)
+- LocalStorage (foydalanuvchi ma’lumotlarini saqlash)
+- ShadCN UI inspired design (stil va layout uchun)
+- CSS variables orqali dark/light rejim
+- `lang.js` – dinamik til almashtirish
+
+---
+
+## 📁 Loyihaning tuzilishi / Структура проекта / Project Structure
+
+```
+📁 root/
+├── index.html          # Asosiy sahifa
+├── styles.css          # Barcha dizayn va rejimlar
+├── script.js           # Ilova funksiyalari
+├── lang.js             # Til almashtirish moduli
+└── README.md           # Ushbu fayl
+```
+
+---
+
+## 🚀 Ishga tushurish / Запуск / Getting Started
+
+1. Repoyani yuklab oling yoki klon qiling:
+   ```bash
+   git clone https://github.com/azgarov-d/habit_tracker.git
+   cd habit_tracker
+   ```
+
+2. `index.html` faylini browser orqali oching:
+   ```bash
+   start index.html
+   ```
+
+3. Dastur avtomatik ishga tushadi. Ma’lumotlar brauzerda saqlanadi.
+
+---
+
+
+## 👨‍💻 Muallif / Автор / Author
+
+**Azgarov Diyorbek**  
+Frontend Developer | Uzbekistan  
+🔗 GitHub: [@azgarov_diyorbek](https://github.com/azgarov-d)  
+
+
+---
+
+> “Hayotingizni o‘zgartirish oson emas, lekin uni nazorat qilish — endi mumkin.” 🌱
+
